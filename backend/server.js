@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-    origin: "http://localhost:8081"
+    origin: "http://localhost:8080"
 };
 
 app.use(cors(corsOptions));
@@ -39,7 +39,7 @@ require("./app/routes/movie.routes")(app);
 
 // ####### END #######
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8060;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}.`);
 });
