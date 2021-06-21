@@ -7,5 +7,11 @@ const db = {};
 db.mongoose = mongoose;
 db.url = dbConfig.url;
 db.movies = require("./movie.model.js")(mongoose);
+db.user = require("./user.model");
+db.role = require("./role.model");
+
+db.ROLES = ["user", "admin", "moderator"];
+
+module.exports = db;
 
 module.exports = db;
