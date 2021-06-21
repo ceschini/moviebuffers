@@ -15,7 +15,7 @@
                 <router-link to="/mod" class="nav-link">Moderator Board</router-link>
             </li>
             <li v-if="currentUser && (!showAdminBoard && !showModeratorBoard)" class="nav-item">
-                <router-link to="/mod" class="nav-link">User Board</router-link>
+                <router-link to="/user" class="nav-link">User Board</router-link>
             </li>
             <li v-if="currentUser" class="nav-item">
                 <router-link to="/movies" class="nav-link">Movies</router-link>
