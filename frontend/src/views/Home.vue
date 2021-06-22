@@ -3,7 +3,7 @@
          <div class="hero-banner">
              <p>Welcome to...</p>
              <h1>MovieBuffers</h1>
-             <div class="hero-links">
+             <div v-if="!currentUser" class="hero-links">
              <router-link to="/register" class="nav-link">Sign Up</router-link>
              <router-link to="/login" class="nav-link">Login</router-link>
              </div>
@@ -33,6 +33,11 @@ export default {
                 error.toString();
             }
         );
+    },
+    computed: {
+        currentUser() {
+          return this.$store.state.auth.user;
+        },
     }
 };
 </script>

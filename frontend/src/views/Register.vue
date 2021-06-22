@@ -50,9 +50,8 @@
               class="alert-danger"
             >{{errors.first('password')}}</div>
           </div>
-          <div class="form-group">
+          <br>
             <button class="btn btn-primary btn-block">Sign Up</button>
-          </div>
         </div>
       </form>
       <div

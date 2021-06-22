@@ -1,7 +1,8 @@
 <template>
   <div class="container">
       <header class="jumbotron">
-          <h3>{{ content }}</h3>
+          <h1>Wellcome, Admin</h1>
+          <h4>Only you have the power to erase <strong>all Movies</strong>.</h4>
       </header>
   </div>
 </template>
