@@ -22,34 +22,41 @@
                 </li>
           </ul>
 
-          <button class="m-3 btn btn-sm btn-danger" @click="removeAllMovies">Remove All</button>
+          <button v-if="showAdminBoard" class="m-3 btn btn-sm btn-danger" @click="removeAllMovies">Remove All</button>
       </div>
       <div class="col-md-6">
           <div v-if="currentMovie">
-              <h4>Movie</h4>
-              <div>
-                  <label><strong>Title:</strong></label> {{ currentMovie.title }}
+              <div v-if="(!currentMovie.published && !showModeratorBoard)">
+                  <p>Work in Progress</p>
               </div>
-              <div>
-                  <label><strong>Description:</strong></label> {{ currentMovie.description }}
+              <div v-else>
+                  <h4>Movie Review</h4>
+                  <div>
+                      <label><strong>Title:</strong></label> {{ currentMovie.title }}
+                  </div>
+                  <div>
+                      <label><strong>Review:</strong></label> {{ currentMovie.description }}
+                  </div>
+                  <div>
+                      <label><strong>Status:</strong></label> {{ currentMovie.published ? "Published" : "Pending" }}
+                  </div >
+                  <br>
               </div>
-              <div>
-                  <label><strong>Status:</strong></label> {{ currentMovie.published ? "Published" : "Pending" }}
-              </div>
-
-              <a class="btn bg-warning" :href="'/movies/' + currentMovie.id">Edit</a>
+              <div v-if="showModeratorBoard">
+                  <a class="btn bg-warning" :href="'/movies/' + currentMovie.id">Edit</a>
+                </div>
           </div>
           <div v-else>
               <br />
               <p>Please select a Movie</p>
           </div>
       </div>
-  {{ currentMovie }}
   </div>
 </template>
 
 <script>
 import MovieDataService from "../services/MovieDataService";
+
 export default {
     name: "movies-list",
     data() {
@@ -107,8 +114,26 @@ export default {
             console.log(id);
         }
     },
-    mounted() {
+    beforeMount() {
         this.retrieveMovies();
+    },
+    computed: {
+        currentUser() {
+          return this.$store.state.auth.user;
+        },
+        showAdminBoard() {
+          if (this.currentUser && this.currentUser.roles) {
+              return this.currentUser.roles.includes('ROLE_ADMIN');
+          }
+
+          return false;
+        },
+        showModeratorBoard() {
+          if (this.currentUser && this.currentUser.roles) {
+              return this.currentUser.roles.includes('ROLE_MODERATOR');
+          }
+          return false;
+        }
     }
 }
 </script>

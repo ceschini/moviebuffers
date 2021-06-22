@@ -8,19 +8,23 @@
                   <input type="text" class="form-control" id="title" v-model="currentMovie.title" />
               </div>
               <div class="form-group">
-                  <label for="description">Description</label>
-                  <input type="text" class="form-control" id="description" v-model="currentMovie.description" />
+                  <label for="description">Review</label>
+                  <textarea rows="4" type="text" class="form-control" id="description" v-model="currentMovie.description" />
               </div>
               <div class="form-group">
                   <label><strong>Status:</strong></label>
                   {{ currentMovie.published ? "Published" : "Pending" }}
               </div>
           </form>
-          <button class="btn text-white bg-primary mr-2" v-if="currentMovie.published" @click="updatePublished(false)">Unpublish</button>
-            <button class="btn text-white bg-primary mr-2" v-else @click="updatePublished(true)">Publish</button>
-            <button class="btn text-white bg-danger mr-2" @click="deleteMovie">Delete</button>
-            <button type="submit" class="btn text-white bg-success" @click="updateMovie">Update</button>
+          <br>
+          <div class="button-group mb-5">
+              <button class="btn text-white bg-primary mr-2" v-if="currentMovie.published" @click="updatePublished(false)">Unpublish</button>
+                <button class="btn text-white bg-primary mr-2" v-else @click="updatePublished(true)">Publish</button>
+                <button class="btn text-white bg-danger mr-2" @click="deleteMovie">Delete</button>
+                <button type="submit" class="btn text-white bg-success" @click="updateMovie">Update</button>
+          </div>
             <p>{{ message }}</p>
+            <a class="btn bg-secondary text-white" :href="'/movies/'">Go Back</a>
       </div>
       <div v-else>
           <br />
@@ -102,5 +106,10 @@ export default {
 .edit-form {
     max-width: 300px;
     margin: auto;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
 }
 </style>

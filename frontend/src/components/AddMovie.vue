@@ -13,22 +13,29 @@
               />
           </div>
           <div class="form-group">
-              <label for="description">Description</label>
-              <input
+              <label for="description">Review</label>
+              <textarea
                 type="text"
                 class="form-control"
                 id="description"
                 required
                 v-model="movie.description"
                 name="description"
+                rows="4"
               />
           </div>
-
-          <button class="btn btn-success" @click="saveMovie">Save</button>
+        <br>
+          <div class="button-group">
+              <button class="btn btn-success" @click="saveMovie">Save</button>
+              <a class="btn bg-secondary text-white" :href="'/movies/'">Go Back</a>
+          </div>
       </div>
       <div v-else>
           <h4>You saved a movie successfully!</h4>
-          <button class="btn btn-success" @click="newMovie">Add</button>
+         <div class="button-group">
+              <button class="btn btn-success" @click="newMovie">Add</button>
+              <a class="btn bg-secondary text-white" :href="'/movies/'">Go Back</a>
+         </div>
       </div>
   </div>
 </template>
@@ -73,9 +80,17 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+h4 {
+    margin-top:1rem;
+}
 .submit-form {
     max-width: 300px;
     margin: auto;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
 }
 </style>

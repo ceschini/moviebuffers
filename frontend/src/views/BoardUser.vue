@@ -1,7 +1,8 @@
 <template>
   <div class="container">
       <header class="jumbotron">
-          <h3>{{ content }}</h3>
+        <h1>Welcome to MovieBuffers!</h1>
+        <h4>Feel free to explore movie reviews by our Buffer's Moderators...</h4>
       </header>
   </div>
 </template>

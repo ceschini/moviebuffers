@@ -1,7 +1,8 @@
 <template>
   <div class="container">
       <header class="jumbotron">
-          <h3>{{ content }}</h3>
+          <h1>Welcome, Buffer!</h1>
+          <h4>You are a moderator, feel free to add, edit or remove Movie Reviews.</h4>
       </header>
   </div>
 </template>

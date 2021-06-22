@@ -2,22 +2,22 @@
   <div class="container">
       <header class="jumbotron">
           <h3>
-              <strong>{{ currentUser.username}}</strong> Profile
+              Welcome, <strong>{{ currentUser.username}}</strong>
           </h3>
       </header>
       <p>
-          <strong>Token:</strong>
+          <strong>Your Token:</strong>
           {{ currentUser.accessToken.substring(0, 20)}} ... {{currentUser.accessToken.substr(currentUser.accessToken.length - 20)}}
       </p>
       <p>
-          <strong>Id:</strong>
+          <strong>Your Id:</strong>
           {{ currentUser.id }}
       </p>
       <p>
           <strong>Email:</strong>
           {{ currentUser.email }}
       </p>
-      <strong>Authorities:</strong>
+      <strong>Your access:</strong>
       <ul>
           <li v-for="(role,index) in currentUser.roles" :key="index">{{ role }}</li>
       </ul>
