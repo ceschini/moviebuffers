@@ -24,7 +24,7 @@
                 <router-link v-if="showModeratorBoard" to="/add" class="nav-link">Add Movie</router-link>
             </li>
         </div>
-        <div v-if="!currentUser" class="navbar-nav ml-auto">
+        <div v-if="!currentUser" class="navbar-nav ml-auto f-right">
             <li class="nav-item">
                 <router-link to="/register" class="nav-link">
                     <font-awesome-icon icon="user-plus" /> Sign Up
