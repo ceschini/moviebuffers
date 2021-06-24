@@ -52,7 +52,11 @@
           </div>
           <br>
           <div class="form-group">
-              <input type="checkbox" name="admin" id="admin" v-model="admin"> Admin
+              <div class="check-group">
+                  <input type="checkbox" name="admin" id="admin" v-model="admin"> Admin
+              </div>
+              
+              <input type="checkbox" name="mod" id="mod" v-model="mod"> Moderator
           </div>
           <br>
             <button class="btn btn-primary btn-block">Sign Up</button>
@@ -83,6 +87,7 @@ export default {
             successful: false,
             message: '',
             admin: false,
+            mod: false
         };
     },
     computed: {
@@ -99,6 +104,10 @@ export default {
         handleRegister() {
             if (this.admin) {
                 this.user.roles = ["admin"]
+            } 
+            if (this.mod) {
+                this.user.roles.push('user')
+                this.user.roles.push('moderator')
             }
             this.message = '';
             this.submitted = true;
