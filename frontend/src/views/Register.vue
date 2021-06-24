@@ -51,6 +51,10 @@
             >{{errors.first('password')}}</div>
           </div>
           <br>
+          <div class="form-group">
+              <input type="checkbox" name="admin" id="admin" v-model="admin"> Admin
+          </div>
+          <br>
             <button class="btn btn-primary btn-block">Sign Up</button>
         </div>
       </form>
@@ -58,7 +62,11 @@
         v-if="message"
         class="alert"
         :class="successful ? 'alert-success' : 'alert-danger'"
-      >{{message}}</div>
+      >
+      {{message}}
+      </div>
+      <br>
+      <router-link to="/login" class="nav-link">Login</router-link>
     </div>
   </div>
 </template>
@@ -73,7 +81,8 @@ export default {
             user: new User('', '', ''),
             submitted: false,
             successful: false,
-            message: ''
+            message: '',
+            admin: false,
         };
     },
     computed: {
@@ -88,6 +97,9 @@ export default {
     },
     methods: {
         handleRegister() {
+            if (this.admin) {
+                this.user.roles = ["admin"]
+            }
             this.message = '';
             this.submitted = true;
             this.$validator.validate().then(isValid => {
