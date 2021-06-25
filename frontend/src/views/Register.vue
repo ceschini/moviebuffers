@@ -102,12 +102,16 @@ export default {
     },
     methods: {
         handleRegister() {
+            this.user.roles = []
             if (this.admin) {
-                this.user.roles = ["admin"]
+                this.user.roles.push('admin')
             } 
             if (this.mod) {
                 this.user.roles.push('user')
                 this.user.roles.push('moderator')
+            }
+            if (!this.mod && !this.admin) {
+              this.user.roles.push('user')
             }
             this.message = '';
             this.submitted = true;
